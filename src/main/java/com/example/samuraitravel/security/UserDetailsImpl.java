@@ -16,7 +16,7 @@ public class UserDetailsImpl implements UserDetails {
 		this.authorities = authorities;
 	}
 	
-	public User GetUser() {
+	public User getUser() {
 		return user;
 	}
 	
