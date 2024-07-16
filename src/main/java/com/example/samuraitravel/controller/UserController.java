@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.samuraitravel.entity.User;
 import com.example.samuraitravel.repository.UserRepository;
 import com.example.samuraitravel.security.UserDetailsImpl;
 
@@ -20,9 +21,9 @@ public class UserController {
 
 	@GetMapping
 	public String index(@AuthenticationPrincipal UserDetailsImpl userDetailsImpl, Model model) {
-		user user = userRepository.getReferenceById(userDetailsImpl.getUser().getId());
+		User user = userRepository.getReferenceById(userDetailsImpl.getUser().getId());
 
-		model.addAllAttributes("user", user);
+		model.addAttribute("user", user);
 
 		return "user/index";
 	}
