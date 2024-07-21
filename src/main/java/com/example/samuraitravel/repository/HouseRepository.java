@@ -6,10 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.samuraitravel.entity.House;
 
-public interface HouseRepository extends JpaRepository<House, Long> {
-	Page<House> findByNameLikeOrAddressLike(String name, String address, Pageable pageable);
+public interface HouseRepository extends JpaRepository<House, Integer> {
+	public Page<House> findByNameLike(String keyword, Pageable pageable);
 
-	Page<House> findByAddressLike(String address, Pageable pageable);
+	public Page<House> findByNameLikeOrAddressLike(String nameKeyword, String addressKeyword, Pageable pageable);
 
-	Page<House> findByPriceLessThanEqual(Integer price, Pageable pageable);
+	public Page<House> findByAddressLike(String area, Pageable pageable);
+
+	public Page<House> findByPriceLessThanEqual(Integer price, Pageable pageable);
 }
